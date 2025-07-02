@@ -6,7 +6,7 @@ public class TransakceResponseDTO {
 
     private Long id;
     private double castka;
-    private String poznamka;
+    private String popis;
     private TypTransakce typ;
 
 
@@ -35,11 +35,11 @@ public class TransakceResponseDTO {
         this.castka = castka;
     }
 
-    public String getPoznamka() {
-        return poznamka;
+    public String getPopis() {
+        return popis;
     }
 
-    public void setPoznamka(String poznamka) {
-        this.poznamka = poznamka;
+    public void setPopis(String popis) {
+        this.popis = popis;
     }
 }

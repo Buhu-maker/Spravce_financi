@@ -1,6 +1,5 @@
 package cz.spravceFinanci.spravce_financi.dto;
 
-import cz.spravceFinanci.spravce_financi.entity.TypTransakce;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
@@ -13,7 +12,7 @@ public class TransakceRequestDTO {
     private double castka;
 
     @NotBlank
-    private String poznamka;
+    private String popis;
 
     // Gettery a settery
     public String getTyp() {
@@ -32,12 +31,12 @@ public class TransakceRequestDTO {
         this.castka = castka;
     }
 
-    public String getPoznamka() {
-        return poznamka;
+    public String getPopis() {
+        return popis;
     }
 
-    public void setPoznamka(String poznamka) {
-        this.poznamka = poznamka;
+    public void setPopis(String popis) {
+        this.popis = popis;
 
     }
 }
