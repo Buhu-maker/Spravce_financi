@@ -10,7 +10,7 @@ public class Transakce {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double castka;
-    private String poznamka;
+    private String popis;
     @Enumerated(EnumType.STRING)
     private TypTransakce typ;
 
@@ -22,7 +22,7 @@ public class Transakce {
     public Transakce(double castka, TypTransakce typ, String poznamka) {
         this.castka = castka;
         this.typ = typ;
-        this.poznamka = poznamka;
+        this.popis = poznamka;
     }
 
     public Long getId() {
@@ -37,8 +37,8 @@ public class Transakce {
         return typ;
     }
 
-    public String getPoznamka() {
-        return poznamka;
+    public String getPopis() {
+        return popis;
     }
 
     public void setCastka(double castka) {
@@ -49,8 +49,8 @@ public class Transakce {
         this.typ = typ;
     }
 
-    public void setPoznamka(String poznamka) {
-        this.poznamka = poznamka;
+    public void setPopis(String popis) {
+        this.popis = popis;
     }
 
 

@@ -10,7 +10,7 @@ public class TransakceMapper {
     public static Transakce toEntity(TransakceRequestDTO dto) {
         Transakce transakce = new Transakce();
         transakce.setCastka(dto.getCastka());
-        transakce.setPoznamka(dto.getPoznamka());
+        transakce.setPopis(dto.getPopis());
         transakce.setTyp(TypTransakce.valueOf(dto.getTyp().toUpperCase()));
         return transakce;
     }
@@ -19,7 +19,7 @@ public class TransakceMapper {
         TransakceResponseDTO dto = new TransakceResponseDTO();
         dto.setId(entity.getId());
         dto.setCastka(entity.getCastka());
-        dto.setPoznamka(entity.getPoznamka());
+        dto.setPopis(entity.getPopis());
         dto.setTyp(dto.getTyp()); // .name() vrátí např. "PRIJEM"
         return dto;
     }
