@@ -11,6 +11,12 @@ const TransakcePage = () => {
     nactiTransakce();
   }, []);
 
+  const celkovySoucet = transakce.reduce((soucet, t) => {
+    return t.typ === "PRIJEM"
+      ? soucet + t.castka
+      : soucet - t.castka;
+  }, 0);
+
   const nactiTransakce = async () => {
     try {
       const odpoved = await ziskejTransakce();
@@ -79,13 +85,15 @@ const TransakcePage = () => {
       </form>
 
       <ul>
-        {transakce.map((t) => (
+        {[...transakce].reverse().map((t) => (
           <li key={t.id}>
             [{t.typ}] {t.popis} – {t.castka} Kč
             <button onClick={() => handleSmazani(t.id)}>Smazat</button>
           </li>
         ))}
       </ul>
+
+      <h3> Celkový zůstatek: {celkovySoucet} Kč</h3>
     </div>
   );
 };
