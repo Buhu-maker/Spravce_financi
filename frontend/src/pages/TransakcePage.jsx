@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ziskejTransakce, pridejTransakci, smazTransakci } from '../services/transakceService';
+import TransakceDisplay from '../components/TransakceDisplay';
 
 const TransakcePage = () => {
   const [transakce, setTransakce] = useState([]);
   const [popis, setPopis] = useState('');
   const [castka, setCastka] = useState('');
-  const [typ, setTyp] = useState('VYDAJ'); // výchozí hodnota
+  const [typ, setTyp] = useState('VYDAJ');
 
   useEffect(() => {
     nactiTransakce();
@@ -61,40 +62,18 @@ const TransakcePage = () => {
   };
 
   return (
-    <div>
-      <h2>Seznam transakcí</h2>
-
-      <form onSubmit={handleOdeslani}>
-        <input
-          type="text"
-          placeholder="Popis"
-          value={popis}
-          onChange={(e) => setPopis(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Částka"
-          value={castka}
-          onChange={(e) => setCastka(e.target.value)}
-        />
-        <select value={typ} onChange={(e) => setTyp(e.target.value)}>
-          <option value="PRIJEM">Příjem</option>
-          <option value="VYDAJ">Výdaj</option>
-        </select>
-        <button type="submit">Přidat</button>
-      </form>
-
-      <ul>
-        {[...transakce].reverse().map((t) => (
-          <li key={t.id}>
-            [{t.typ}] {t.popis} – {t.castka} Kč
-            <button onClick={() => handleSmazani(t.id)}>Smazat</button>
-          </li>
-        ))}
-      </ul>
-
-      <h3> Celkový zůstatek: {celkovySoucet} Kč</h3>
-    </div>
+    <TransakceDisplay
+      transakce={transakce}
+      popis={popis}
+      castka={castka}
+      typ={typ}
+      setPopis={setPopis}
+      setCastka={setCastka}
+      setTyp={setTyp}
+      onOdeslani={handleOdeslani}
+      onSmazani={handleSmazani}
+      celkovySoucet={celkovySoucet}
+    />
   );
 };
 
